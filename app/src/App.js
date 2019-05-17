@@ -19,6 +19,7 @@ import { getSelf } from 'stores/user/fetches'
 
 // components
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import SiteHeader from 'components/SiteHeader'
 
 // pages
 import Login from 'pages/Login'
@@ -66,8 +67,10 @@ export default class App extends Component {
 					<Normalize/>
 					<Router>
 						<Switch>
-							<Route exact={true} path={PATH.ROOT} component={Login}/>
-							<Route path={PATH.BUILDER} component={Builder}/>
+							<SiteHeader>
+								<Route exact={true} path={PATH.ROOT} component={Login}/>
+								<Route path={PATH.BUILDER} component={Builder}/>
+							</SiteHeader>
 						</Switch>
 					</Router>
 				</React.Fragment>
