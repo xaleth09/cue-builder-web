@@ -67,7 +67,7 @@ export default class App extends Component {
 					<Router>
 						<Switch>
 							<Route exact={true} path={PATH.ROOT} component={Login}/>
-							<Route path={PATH.ROOT} component={Builder}/>
+							<Route path={PATH.BUILDER} component={Builder}/>
 						</Switch>
 					</Router>
 				</React.Fragment>
