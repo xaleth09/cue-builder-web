@@ -1,6 +1,7 @@
 // Router Paths
 export const PATH = {
 	ROOT: '/',
+	BUILDER: '/builder'
 }
 
 // Page Titles

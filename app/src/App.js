@@ -22,6 +22,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 // pages
 import Login from 'pages/Login'
+import Builder from 'pages/Builder'
 
 // constants
 import { PATH } from 'config'
@@ -66,6 +67,7 @@ export default class App extends Component {
 					<Router>
 						<Switch>
 							<Route exact={true} path={PATH.ROOT} component={Login}/>
+							<Route path={PATH.ROOT} component={Builder}/>
 						</Switch>
 					</Router>
 				</React.Fragment>
