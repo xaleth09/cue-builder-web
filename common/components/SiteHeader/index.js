@@ -13,11 +13,9 @@ import { NavLink } from 'react-router-dom'
 import { PATH } from 'config'
 
 class SiteHeader extends Component {
-
 	render () {
 		const { children, location: { pathname } } = this.props
 
-		console.log(this.props)
 		return (
 			<React.Fragment>
 				<Header centerVertically spaceBetween>
