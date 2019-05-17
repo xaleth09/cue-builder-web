@@ -2,12 +2,14 @@
 import { combineReducers } from 'redux'
 
 // reducers
-import customersReducer from 'stores/customers/reducer'
 import userReducer from 'stores/user/reducer'
+import customersReducer from 'stores/customers/reducer'
+import optionsReducer from 'stores/options/reducer'
 
 const appReducer = combineReducers({
+	user: userReducer,
 	customers: customersReducer,
-	user: userReducer
+	options: optionsReducer
 })
 
 export default appReducer

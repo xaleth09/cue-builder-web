@@ -82,7 +82,7 @@ const scrims = {
 }
 
 const sizes = {
-	borderRadius: '.25rem',
+	borderRadius: '.125rem',
 	inputBorderRadius: '.125rem'
 }
 
