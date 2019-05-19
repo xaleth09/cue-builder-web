@@ -12,4 +12,18 @@ export const TITLE = {
 	BUILDER: `Build | ${MAIN}`
 }
 
-export const LOGO_URL = 'https://login.servicechannel.com/S3Files/CobranderLogo?cobranderId='
+export const SECTIONS = {
+	FOREARM: 'FOREARM',
+	WRAP: 'WRAP',
+	BUTTCAP: 'BUTTCAP'
+}
+
+export const PIECES = {
+	JOINT: '',
+	FOREARM: '',
+	WRAP: '',
+	SLEEVE: '',
+	BUTTCAP: '',
+	RING: '',
+	INLAY: ''
+}

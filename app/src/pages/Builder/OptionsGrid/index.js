@@ -18,32 +18,43 @@ import OptionCard from './OptionCard'
 class OptionsGrid extends Component {
 
 	render () {
-		const { title = 'Title', options } = this.props
+		const { titles = ['Title1', 'Title2'], activeSubOption = 'Title1', options } = this.props
 
 		return (
 			<Content>
-				<Header centerVertically spaceBetween>
-					<span>{title}</span>
-					<Row>
-						<Button style={{ marginRight: '.25rem' }}
-						        onClick={() => {
-						        }}
+				<Row right
+				     style={{ width: '100%' }}
+				>
+					<Button style={{ marginRight: '.25rem' }}
+					        onClick={() => {
+					        }}
+					>
+						Cancel
+					</Button>
+					<Button style={{ marginLeft: '.25rem' }}
+					        onClick={() => {
+					        }}
+					>
+						Save
+					</Button>
+				</Row>
+				<Tabs centeredVertically>
+					{titles.map(title => (
+						<Tab centered
+						     key={title}
+						     active={activeSubOption === title}
 						>
-							Cancel
-						</Button>
-						<Button style={{ marginLeft: '.25rem' }}
-						        onClick={() => {
-						        }}
-						>
-							Save
-						</Button>
-					</Row>
-				</Header>
-				<Options wrap>
-					{options.map(option => (
-						<OptionCard {...{ option }}/>
+							<H3>{title}</H3>
+						</Tab>
 					))}
-				</Options>
+				</Tabs>
+				<Card>
+					<Options>
+						{/*{options.map((option, i) => (*/}
+						{/*	<OptionCard key={i} {...{ option }}/>*/}
+						{/*))}*/}
+					</Options>
+				</Card>
 			</Content>
 		)
 	}
@@ -62,21 +73,40 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(mapStateToProps, mapDispatchToProps)(OptionsGrid)
 
 const Content = styled(Col)`
-	min-height: 20rem;
-	box-shadow: ${props => props.theme.colors.primaryBoxShadow};
+	padding: 1rem 2rem;
 	background-color: white;
 `
 
-const Header = styled(Row)`
-	height: 4rem;
-	padding-left: 1rem;
-	padding-right: 1rem;
-	border-top-left-radius: .25rem;
-	border-top-right-radius: .25rem;
-	background-color: black;
-	color: white;
+const Card = styled(Col)`
+	min-height: 20rem;
+	border-top: .5px solid ${props => props.theme.colors.light};
+	box-shadow: ${props => props.theme.colors.primaryBoxShadow};
 `
 
-const Options = styled(Row)`
+const Tab = styled(Col)`
+	margin-right: 1rem;
+	padding: 1rem 2rem;
+	text-align: center;
+	border-top-left-radius: .25rem;
+	border-top-right-radius: .25rem;
+	background-color: ${props => props.active ? props.theme.colors.secondary : 'transparent'};
+	color:  ${props => props.active ? 'white' : props.theme.colors.secondary};
+	cursor: pointer;
+`
+
+const Tabs = styled(Row)`
+	
+`
+
+
+const H3 = styled.h3`
+	margin: 0;
+`
+
+const Options = styled.div`
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 10rem);
+	grid-template-rows: repeat(auto-fill, 5rem);
+	grid-gap: 2rem 2rem; 
 	padding: 1rem;
 `

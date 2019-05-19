@@ -22,7 +22,7 @@ import { CHECKBOX_STATE } from 'components/Checkbox'
 class OptionCard extends Component {
 
 	render () {
-		const { option: { title = 'Title', price, image } } = this.props
+		const { option: { title = 'Title', price, imageUrl } } = this.props
 
 		return (
 			<Content>
@@ -31,10 +31,10 @@ class OptionCard extends Component {
 					<span>$ {price}</span>
 				</Header>
 				<Card>
-					Hello, World!
-					<Checkbox checked={CHECKBOX_STATE.CHECKED}
-					          onClick={() => {
-					          }}
+					<OptionImg src={imageUrl}/>
+					<CornerCheckbox checked={CHECKBOX_STATE.CHECKED}
+					                onClick={() => {
+					                }}
 					/>
 				</Card>
 			</Content>
@@ -52,14 +52,27 @@ const Header = styled(Row)`
 	padding: .25rem .5rem;
 	border-top-left-radius: .25rem;
 	border-top-right-radius: .25rem;
-	background-color: black;
+	background-color: #46ACC2;
 	color: white;
 `
 
 const Card = styled(Col)`
-	min-height: 5rem;
-	min-width: 15rem;
-	padding: .5rem;
+	position: relative;
+	height: 5rem;
+	width: 15rem;
 	border-radius: .25rem;
 	box-shadow: ${props => props.theme.colors.primaryBoxShadow};
+`
+
+const OptionImg = styled.img`
+	height: 100%;
+	width: auto;
+`
+
+const CornerCheckbox = styled(Checkbox)`
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin-right: .9rem;
+	margin-bottom: .75rem;
 `

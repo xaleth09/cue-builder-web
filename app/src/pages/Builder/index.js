@@ -8,22 +8,45 @@ import { bindActionCreators } from 'redux'
 // styled
 import styled from 'styled-components'
 
+// fetches
+import { fetchCue } from 'stores/cue/fetches'
+import { fetchOptions } from 'stores/options/fetches'
+
 // components
 import Row from 'components/Row'
 import Col from 'components/Col'
 import Page from 'components/Page'
 
-import Index from './Preview'
+import CuePreviewer from './CuePreviewer'
+import SectionPreviewer from './SectionPreviewer'
 import OptionsGrid from './OptionsGrid'
 
+// constants
+import { SECTIONS } from 'config'
+
 class Builder extends Component {
+
+	state = {
+		activeSection: SECTIONS.FOREARM,
+		activePiece: ''
+	}
+
+	componentDidMount () {
+		fetchCue()
+		fetchOptions()
+	}
+
+
 
 	render () {
 		return (
 			<Page>
 				<Content>
-					<Index/>
-					<OptionsGrid/>
+					<CuePreviewer/>
+					<Editor>
+						<SectionPreviewer/>
+						<OptionsGrid/>
+					</Editor>
 				</Content>
 			</Page>
 		)
@@ -32,6 +55,13 @@ class Builder extends Component {
 
 export default Builder
 
-const Content = styled(Col)`
-	padding: 2rem;
+const Content = styled.div`
+	height: 100%;
+	display: grid;
+	grid-template-columns: 1.33fr 6fr;
+`
+
+const Editor = styled.div`
+	display: grid;
+	grid-template-rows: 1.33fr 6fr;
 `

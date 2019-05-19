@@ -12,8 +12,7 @@ import Col from 'components/Col'
 import Icon from './Icon'
 
 export const CHECKBOX_STATE = {
-	UNCHECKED: -1,
-	PARTIAL: 0,
+	UNCHECKED: 0,
 	CHECKED: 1
 }
 
@@ -25,13 +24,8 @@ const Checkbox = ({ checked = CHECKBOX_STATE.UNCHECKED, onClick, style, classNam
 	}, [checked])
 
 	let icon = ''
-	switch (checkedState) {
-		case CHECKBOX_STATE.PARTIAL:
-			icon = 'remove'
-			break
-		case CHECKBOX_STATE.CHECKED:
-			icon = 'done'
-			break
+	if (checkedState) {
+		icon = 'done'
 	}
 
 // TODO: put back in
@@ -67,7 +61,7 @@ const Checkbox = ({ checked = CHECKBOX_STATE.UNCHECKED, onClick, style, classNam
 export default Checkbox
 
 Checkbox.propTypes = {
-	checked: PropTypes.oneOf([CHECKBOX_STATE.UNCHECKED, CHECKBOX_STATE.PARTIAL, CHECKBOX_STATE.CHECKED]).isRequired,
+	checked: PropTypes.oneOf([CHECKBOX_STATE.UNCHECKED, CHECKBOX_STATE.CHECKED]).isRequired,
 	onClick: PropTypes.func.isRequired
 }
 
@@ -75,8 +69,8 @@ const Wrapper = styled.div`
 	height: 1rem;
 	width: 1rem;
 	border-radius:  ${props => props.theme.sizes.inputBorderRadius};
-	background-color: ${props => props.checked === CHECKBOX_STATE.UNCHECKED ? props.theme.colors.light : props.theme.colors.buttonIcon};
-	border: 1px solid ${props => props.checked === CHECKBOX_STATE.UNCHECKED ? props.theme.colors.disabledText  : props.theme.colors.buttonIcon};
+	background-color: ${props => props.checked === CHECKBOX_STATE.UNCHECKED ? props.theme.colors.light : props.theme.colors.primary};
+	border: 1px solid ${props => props.checked === CHECKBOX_STATE.UNCHECKED ? props.theme.colors.disabledText : props.theme.colors.primary};
 `
 
 const HiddenCheckBox = styled.input`
